@@ -1,12 +1,13 @@
-# Demos
-Demos for some topics, just for personal recording.
+# demos
 
 
+## Description
+
+Demos for python.
+Novice to proficient.
 
 
+## Note
 
-## Acknowledgments
-- Git commit using [gitmoji][gitmoji], an initiative to standardize and explain the use of emojis on GitHub commit messages.
-
-
-[gitmoji]: https://github.com/carloscuesta/gitmoji
+This project has been set up using PyScaffold 3.1. For details and usage
+information on PyScaffold see https://pyscaffold.org/.
