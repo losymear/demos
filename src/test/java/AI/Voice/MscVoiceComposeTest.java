@@ -12,6 +12,7 @@ class MscVoiceComposeTest {
     void TestForJunit5(){
         MscVoiceCompose mscVoiceCompose = new MscVoiceCompose();
         assertTrue(mscVoiceCompose.tmp()=="tmp");
+        assertTrue(false);
     }
 
 }
