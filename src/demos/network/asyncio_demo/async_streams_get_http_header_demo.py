@@ -6,8 +6,8 @@
 # @AUTHOR : losymear
 
 
-"""官方demo https://docs.python.org/3/library/asyncio-stream.html#examples
-命令行执行 python async_streams_get_http_header_demo.py http://www.httpbin.org/get\?a\=test
+"""official example https://docs.python.org/3/library/asyncio-stream.html#examples
+run this command on shell python async_streams_get_http_header_demo.py http://www.httpbin.org/get\?a\=test
 """
 
 import asyncio

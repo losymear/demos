@@ -5,7 +5,7 @@
 # @Project: pydemos
 # @AUTHOR : losymear
 
-"""官方demo https://docs.python.org/3/library/asyncio-stream.html#examples"""
+"""offical example https://docs.python.org/3/library/asyncio-stream.html#examples"""
 import asyncio
 
 

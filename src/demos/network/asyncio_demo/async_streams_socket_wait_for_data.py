@@ -6,7 +6,7 @@
 # @AUTHOR : losymear
 
 """
-官方demo https://docs.python.org/3/library/asyncio-stream.html#examples
+official example https://docs.python.org/3/library/asyncio-stream.html#examples
 Register an open socket to wait for data using streams
 
 """
