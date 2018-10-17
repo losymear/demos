@@ -7,7 +7,7 @@
 
 
 """official example https://docs.python.org/3/library/asyncio-stream.html#examples
-run this command on shell python async_streams_get_http_header_demo.py http://www.httpbin.org/get\?a\=test
+run this command on shell python asyncio_streams_get_http_header_demo.py http://www.httpbin.org/get\?a\=test
 """
 
 import asyncio
