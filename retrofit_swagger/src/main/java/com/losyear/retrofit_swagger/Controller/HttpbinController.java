@@ -1,7 +1,7 @@
 package com.losyear.retrofit_swagger.Controller;
 
-import com.losyear.retrofit_swagger.dao.response.Httpbin_GET_Obj;
-import com.losyear.retrofit_swagger.dao.response.Result;
+import com.losyear.retrofit_swagger.dto.response.Httpbin_GET_Obj;
+import com.losyear.retrofit_swagger.dto.response.Result;
 import com.losyear.retrofit_swagger.rest.HttpbinAPIService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

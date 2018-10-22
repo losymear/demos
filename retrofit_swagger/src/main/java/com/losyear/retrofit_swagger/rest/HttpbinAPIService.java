@@ -1,7 +1,6 @@
 package com.losyear.retrofit_swagger.rest;
 
-import com.losyear.retrofit_swagger.dao.response.Httpbin_GET_Obj;
-import okhttp3.ResponseBody;
+import com.losyear.retrofit_swagger.dto.response.Httpbin_GET_Obj;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

@@ -1,4 +1,4 @@
-package com.losyear.retrofit_swagger.DTO;
+package com.losyear.retrofit_swagger.DAO;
 
 import com.losyear.retrofit_swagger.domaIn.People;
 import org.springframework.data.jpa.repository.JpaRepository;

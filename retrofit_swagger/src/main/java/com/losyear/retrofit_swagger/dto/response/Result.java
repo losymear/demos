@@ -1,4 +1,4 @@
-package com.losyear.retrofit_swagger.dao.response;
+package com.losyear.retrofit_swagger.dto.response;
 
 import lombok.Getter;
 import lombok.Setter;
