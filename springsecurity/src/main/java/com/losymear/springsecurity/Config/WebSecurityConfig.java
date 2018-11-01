@@ -1,6 +1,8 @@
 package com.losymear.springsecurity.Config;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -14,22 +16,17 @@ import org.springframework.security.core.userdetails.User;
  */
 
 
+@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled=true)
+@ConditionalOnProperty(name = "testFor", havingValue = "basic")
 @EnableWebSecurity
 public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-//        System.out.println(1);
-//        manager.createUser(User.withDefaultPasswordEncoder().username("user").password("password").roles("USER").build());
-//        return manager;
-//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/login", "/mobile/login", "/api/auth/**", "/reservations/**","/test/permitDefault").permitAll()
+                .antMatchers("/", "/login", "/test/permitDefault/**","/test/filter","/test/permission").permitAll()
                 .antMatchers("/test/userDBA/**").hasRole("DBA")
                 .anyRequest().authenticated()
                 .and()
@@ -39,8 +36,8 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser(User.withDefaultPasswordEncoder().username("user").password("password").roles("USER"))
-                .withUser(User.withDefaultPasswordEncoder().username("DBA").password("password").roles("DBA"));
+                .withUser(User.withDefaultPasswordEncoder().username("user").password("pass").roles("USER"))
+                .withUser(User.withDefaultPasswordEncoder().username("DBA").password("pass").roles("DBA"));
     }
 
 
