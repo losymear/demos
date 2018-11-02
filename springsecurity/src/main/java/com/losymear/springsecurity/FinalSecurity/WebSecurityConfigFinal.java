@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,12 +18,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * @create: 2018-11-02 11:00
  */
 
+@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled=true)
 @ConditionalOnProperty(name = "testFor", havingValue = "final")
 @EnableWebSecurity
 public class WebSecurityConfigFinal extends WebSecurityConfigurerAdapter {
     @Autowired MyAuthenticationEntryPoint myAuthenticationEntryPoint;
     @Autowired MyAccessDenied myAccessDenied;
-
+    @Autowired MyAccessDecisionManager myAccessDecisionManager;
     @Autowired MyAuthenticationProvider myAuthenticationProvider;
 
 
@@ -39,6 +41,7 @@ public class WebSecurityConfigFinal extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .anyRequest().permitAll()
+//                .accessDecisionManager(myAccessDecisionManager)
                 .and()
                 .httpBasic().disable()
                 .sessionManagement()

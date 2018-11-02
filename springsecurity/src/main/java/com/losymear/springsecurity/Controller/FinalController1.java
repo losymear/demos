@@ -3,10 +3,13 @@ package com.losymear.springsecurity.Controller;
 import com.losymear.springsecurity.domain.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.awt.*;
 
 /**
  * @program: springsecurity
@@ -19,10 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 @ConditionalOnProperty(name = "testFor", havingValue = "final")
 @Slf4j
 public class FinalController1 {
+
+    @PreAuthorize("hasRole('ROLEONE')")
     @GetMapping("/test/permitDefault/string")
     public String getString1(@AuthenticationPrincipal UserEntity userEntity) {
         log.info("/test/permitDefault/string中得到{}",userEntity);
-        log.info("进入/test/permitDefault/string");
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 
         return "string";
     }

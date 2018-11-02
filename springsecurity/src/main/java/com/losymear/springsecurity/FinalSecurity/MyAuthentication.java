@@ -2,9 +2,12 @@ package com.losymear.springsecurity.FinalSecurity;
 
 import com.losymear.springsecurity.domain.UserEntity;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -20,6 +23,7 @@ public class MyAuthentication extends AbstractAuthenticationToken {
     private String salt;
     private String digest;
     private UserEntity userEntity;
+    private ArrayList<String> allowedUrls;
 
 
     public MyAuthentication(String uuid,String digest,String salt){
