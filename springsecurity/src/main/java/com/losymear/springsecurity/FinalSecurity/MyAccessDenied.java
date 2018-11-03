@@ -1,5 +1,6 @@
 package com.losymear.springsecurity.FinalSecurity;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
@@ -11,12 +12,13 @@ import java.io.IOException;
 
 /**
  * @program: springsecurity
- * @description:
+ * @description: 401响应
  * @author: losymear
  * @create: 2018-11-02 16:26
  */
 
 @Component
+@ConditionalOnProperty(name = "testFor", havingValue = "final")
 public class MyAccessDenied implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse res, AccessDeniedException e) throws IOException, ServletException {

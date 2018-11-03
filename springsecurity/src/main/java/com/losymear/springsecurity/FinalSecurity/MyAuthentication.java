@@ -1,13 +1,12 @@
 package com.losymear.springsecurity.FinalSecurity;
 
+import com.google.common.collect.ImmutableSet;
 import com.losymear.springsecurity.domain.UserEntity;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -18,12 +17,13 @@ import java.util.Collection;
  * @create: 2018-11-02 15:55
  */
 @Data
+@ConditionalOnProperty(name = "testFor", havingValue = "final")
 public class MyAuthentication extends AbstractAuthenticationToken {
     private String uuid;
     private String salt;
     private String digest;
     private UserEntity userEntity;
-    private ArrayList<String> allowedUrls;
+    private ImmutableSet<String> allowedUrls;
 
 
     public MyAuthentication(String uuid,String digest,String salt){
@@ -34,7 +34,6 @@ public class MyAuthentication extends AbstractAuthenticationToken {
     }
     public MyAuthentication(Collection<? extends GrantedAuthority> authorities, UserEntity userEntity) {
         super(authorities);
-        this.uuid = uuid;
         this.userEntity = userEntity;
     }
     // 用不到该方法

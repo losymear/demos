@@ -10,12 +10,11 @@ import java.util.Objects;
  * @create: 2018-11-03 10:44
  */
 @Entity
-@Table(name = "user_role", schema = "demo", catalog = "")
-public class UserRoleEntity {
+@Table(name = "permission", schema = "demo", catalog = "")
+public class PermissionEntity {
 
     private int id;
-    private int userId;
-    private int roleId;
+    private String urlPattern;
 
     @Id
     @Column(name = "id")
@@ -28,37 +27,26 @@ public class UserRoleEntity {
     }
 
     @Basic
-    @Column(name = "userId")
-    public int getUserId() {
-        return userId;
+    @Column(name = "urlPattern")
+    public String getUrlPattern() {
+        return urlPattern;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    @Basic
-    @Column(name = "roleId")
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setUrlPattern(String urlPattern) {
+        this.urlPattern = urlPattern;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserRoleEntity that = (UserRoleEntity) o;
+        PermissionEntity that = (PermissionEntity) o;
         return id == that.id &&
-                userId == that.userId &&
-                roleId == that.roleId;
+                Objects.equals(urlPattern, that.urlPattern);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, roleId);
+        return Objects.hash(id, urlPattern);
     }
 }

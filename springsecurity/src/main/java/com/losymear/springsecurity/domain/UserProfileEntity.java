@@ -7,7 +7,7 @@ import java.util.Objects;
  * @program: springsecurity
  * @description:
  * @author: losymear
- * @create: 2018-11-02 13:35
+ * @create: 2018-11-03 10:44
  */
 @Entity
 @Table(name = "user_profile", schema = "demo", catalog = "")

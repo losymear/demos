@@ -1,7 +1,5 @@
 package com.losymear.springsecurity.domain;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -9,10 +7,9 @@ import java.util.Objects;
  * @program: springsecurity
  * @description:
  * @author: losymear
- * @create: 2018-11-02 13:35
+ * @create: 2018-11-03 10:44
  */
 @Entity
-@Data
 @Table(name = "user", schema = "demo", catalog = "")
 public class UserEntity {
 
@@ -68,11 +65,12 @@ public class UserEntity {
         UserEntity that = (UserEntity) o;
         return id == that.id &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(uuid, that.uuid);
+                Objects.equals(uuid, that.uuid) &&
+                Objects.equals(token, that.token);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, uuid);
+        return Objects.hash(id, name, uuid, token);
     }
 }

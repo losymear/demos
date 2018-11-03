@@ -22,5 +22,8 @@ public interface UserRoleRepository extends JpaRepository<UserRoleEntity,Integer
             "RoleEntity t3 on t1.roleId=t3.id and t2.uuid=?1")
     List<String> findRolesByUserId(String userId);
 
+    @Query(value = "select t2.urlPattern from PermissionRoleEntity t1 inner join PermissionEntity t2 on t1.urlId=t2.id inner join " +
+            "RoleEntity t3 on t1.roleId=t3.id and t3.id=?1")
+    List<String> findUrlPatternsByRoleId(Integer roleId);
 
 }

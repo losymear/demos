@@ -1,5 +1,6 @@
 package com.losymear.springsecurity.FinalSecurity;
 
+import com.losymear.springsecurity.domain.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.core.Authentication;
@@ -11,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * @program: springsecurity
@@ -38,6 +40,8 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
             // NOTICE: 匿名用户
             log.info("filter得到" +
                     "一个匿名用户");
+            Authentication authentication = new MyAuthentication(uuid, digest, salt);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
             filterChain.doFilter(request, response);
             // TODO:
         }

@@ -23,13 +23,69 @@ import java.awt.*;
 @Slf4j
 public class FinalController1 {
 
-    @PreAuthorize("hasRole('ROLEONE')")
-    @GetMapping("/test/permitDefault/string")
-    public String getString1(@AuthenticationPrincipal UserEntity userEntity) {
+    /**
+     * 测试@AuthenticationPrincipal注解的使用
+     * @param userEntity
+     * @return
+     */
+    @GetMapping("/testPrincipal")
+    public UserEntity testPrincipal(@AuthenticationPrincipal UserEntity userEntity) {
         log.info("/test/permitDefault/string中得到{}",userEntity);
         System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
-
-        return "string";
+        return userEntity;
     }
 
+
+
+    /**
+     * 允许所有访问，包括匿名
+     * @return
+     */
+    @GetMapping("/permitAll")
+    public String permitAll(){
+        return "permit all";
+    }
+
+
+    /**
+     * 允许ROLEONE访问
+     * @return
+     */
+    @PreAuthorize("hasRole('ROLEONE')")
+    @GetMapping("/permitROLE_ONE_ONE")
+    public String permitROLE_ONE_ONE(){
+        return "permit roleone";
+    }
+
+    /**
+     * 允许ROLEONE访问
+     * @return
+     */
+    @PreAuthorize("hasRole('ROLEONE')")
+    @GetMapping("/permitROLE_FAKE_ONE")
+    public String permitROLE_FAKE_ONE(){
+        return "permit roleone";
+    }
+
+
+    /**
+     * 允许ROLEFAKE访问
+     * @return
+     */
+    @PreAuthorize("hasRole('ROLEFAKE')")
+    @GetMapping("/permitROLE_ONE_FAKE")
+    public String permitROLE_ONE_FAKE(){
+        return "permit roleone";
+    }
+
+
+    /**
+     * 允许ROLEFAKE访问
+     * @return
+     */
+    @PreAuthorize("hasRole('ROLEFAKE')")
+    @GetMapping("/permitROLE_FAKE_FAKE")
+    public String permitROLE_FAKE_FAKE(){
+        return "permit roleone";
+    }
 }

@@ -1,6 +1,7 @@
 package com.losymear.springsecurity.FinalSecurity;
 
 import lombok.Data;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.core.GrantedAuthority;
 
 /**
@@ -11,6 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
  */
 
 @Data
+@ConditionalOnProperty(name = "testFor", havingValue = "final")
 public class MyGrantedAuthority implements GrantedAuthority {
     private String role;
 
@@ -18,7 +20,7 @@ public class MyGrantedAuthority implements GrantedAuthority {
     public String getAuthority() {
         return this.role;
     }
-    
+
 
     public MyGrantedAuthority(String role) {
         this.role = role;

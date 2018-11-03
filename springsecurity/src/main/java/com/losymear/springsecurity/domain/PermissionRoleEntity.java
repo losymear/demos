@@ -7,14 +7,14 @@ import java.util.Objects;
  * @program: springsecurity
  * @description:
  * @author: losymear
- * @create: 2018-11-02 13:35
+ * @create: 2018-11-03 10:44
  */
 @Entity
 @Table(name = "permission_role", schema = "demo", catalog = "")
 public class PermissionRoleEntity {
 
     private int id;
-    private String url;
+    private int urlId;
     private int roleId;
 
     @Id
@@ -28,13 +28,13 @@ public class PermissionRoleEntity {
     }
 
     @Basic
-    @Column(name = "url")
-    public String getUrl() {
-        return url;
+    @Column(name = "urlId")
+    public int getUrlId() {
+        return urlId;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setUrlId(int urlId) {
+        this.urlId = urlId;
     }
 
     @Basic
@@ -53,12 +53,12 @@ public class PermissionRoleEntity {
         if (o == null || getClass() != o.getClass()) return false;
         PermissionRoleEntity that = (PermissionRoleEntity) o;
         return id == that.id &&
-                roleId == that.roleId &&
-                Objects.equals(url, that.url);
+                urlId == that.urlId &&
+                roleId == that.roleId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, url, roleId);
+        return Objects.hash(id, urlId, roleId);
     }
 }
