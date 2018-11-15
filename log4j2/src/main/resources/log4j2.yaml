@@ -1,0 +1,39 @@
+Configuration:
+  properties:
+    property:
+      name: filename
+      value: target/test-yaml.log
+  thresholdFilter:
+    level: debug
+  appenders:
+    Console:
+      name: STDOUT
+      PatternLayout:
+        Pattern: "%d %p %C{1.} [%t] %m%n"
+      target: SYSTEM_OUT
+    File:
+      name: file1
+      fileName: ${filename}
+      PatternLayout:
+        Pattern: "%d %p %C{1.} [%t] %m%n"
+
+  Loggers:
+    logger:
+    #      AppenderRef:
+    #        ref: file
+    # swagger的一个bug，会打印出奇怪的Illegal DefaultValue .....
+    # 见https://github.com/springfox/springfox/issues/1100
+    #    - name: org.springframework
+    #      rank: debug
+    #      additivity: false
+    #      AppenderRef:
+    #        ref: file1
+    - name: io.swagger.models.parameters.AbstractSerializableParameter
+      level: error
+      additivity: false
+    Root:
+      level: info
+      AppenderRef:
+      - ref: STDOUT
+      - ref: file1
+

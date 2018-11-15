@@ -49,17 +49,12 @@ public class MyAccessDecisionVoter implements AccessDecisionVoter {
     }
 
     /**
-     * 如果只是简单的字符串匹配，不如直接加下WebSecurityConfigurerAdapter上
      * @param authentication
      * @param object
      * @param configAttributes
      * @throws AccessDeniedException
      * @throws InsufficientAuthenticationException
      */
-//    @Override
-//    public int vote(Authentication authentication, Object object, Collection collection) {
-//        return 0;
-//    }
 
     @Override
     public int vote(Authentication authentication, Object object, Collection configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
