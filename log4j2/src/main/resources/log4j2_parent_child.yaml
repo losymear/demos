@@ -1,0 +1,16 @@
+Configuration:
+  Appenders:
+    Console:
+      name: Console
+      PatternLayout:
+        MarkerPatternSelector:
+          defaultPattern: "%sn. %msg: Logger=%logger%n"
+          PatternMatch:
+            key: CLASS
+            Pattern: "%sn. %msg: Class=%class%n"
+
+  Loggers:
+    Root:
+      level: TRACE
+      AppenderRef:
+        - ref: Console

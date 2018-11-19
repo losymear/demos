@@ -7,7 +7,8 @@ import org.apache.logging.log4j.MarkerManager;
  * @program: log4j2
  * @description:
  * 代码来自官网 https://logging.apache.org/log4j/2.x/manual/usage.html#LoggerVsClass
- * 使用  LoggerName_vs_ClassName.xml
+ * 使用  LoggerName_vs_ClassName.yaml
+ * VM参数 -Dlog4j.configurationFile=classpath:log4j2_parent_child.yaml
  * @author: losymear
  * @create: 2018-11-17 17:56
  */

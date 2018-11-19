@@ -1,0 +1,57 @@
+Configuration:
+  properties:
+    property:
+      name: baseDir
+      value: /root/logs/qumianshi
+  thresholdFilter:
+    level: debug
+  appenders:
+    Console:
+      name: STDOUT
+      PatternLayout:
+        Pattern: "%d %p %C{1.} [%t] %m%n"
+      target: SYSTEM_OUT
+    SMTP:
+      name: mail
+      subject: "趣面试后台日志错误报告"
+      to: "wangyin1768@dingtalk.com"
+      from: "806856843@qq.com"
+      smtpHost: "smtp.qq.com"
+      smtpUsername: "806856843@qq.com"
+      smtpPassword: "ludflmyxsjufbcbg"
+
+    RollingFile:
+      name: rollingFile
+      fileName: "${baseDir}/qumianshi.log"
+      filePattern: "${baseDir}/$${date:yyyy-MM-dd-HH}/qumianshi-%d{yyyy-MM-dd}.log.gz"
+      PatternLayout:
+        Pattern: "%d %p %C{1.} [%t] %m%n"
+      # 定义了rotate的时间
+      Policies:
+        CronTriggeringPolicy:
+          # 每天执行凌晨rotate https://logging.apache.org/log4j/2.x/log4j-core/apidocs/org/apache/logging/log4j/core/util/CronExpression.html
+          schedule: "0 0 0 * * ?"
+      # 定义了rotate的一些规则，最多保留120天
+      DefaultRolloverStrategy:
+        delete:
+          basePath: "${baseDir}"
+          maxDepth: 2
+          IfFileName:
+            glob: "*/qumianshi-*.log.gz"
+          IfLastModified:
+            age: "120d"
+
+  Loggers:
+    logger:
+    # swagger的一个bug，会打印出奇怪的Illegal DefaultValue .....
+    # 见https://github.com/springfox/springfox/issues/1100
+    - name: io.swagger.models.parameters.AbstractSerializableParameter
+      level: error
+      additivity: false
+    Root:
+      level: info
+      AppenderRef:
+      - ref: rollingFile
+      - ref: mail
+        level: fatal
+
