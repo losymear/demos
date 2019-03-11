@@ -1,4 +1,4 @@
-package com.losymear.concurrency;
+package com.losymear.concurrency.forkjoin;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
@@ -11,11 +11,11 @@ import java.util.concurrent.RecursiveTask;
  * @create: 2019-03-11 01:07
  */
 
-public class ForkJoinTaskExample extends RecursiveTask<Integer> {
+public class SquareSum extends RecursiveTask<Integer> {
 
     private Integer n;
 
-    public ForkJoinTaskExample(Integer n) {
+    public SquareSum(Integer n) {
         this.n = n;
     }
 
@@ -25,8 +25,8 @@ public class ForkJoinTaskExample extends RecursiveTask<Integer> {
             return n;
         }
 
-        ForkJoinTaskExample calculator
-                = new ForkJoinTaskExample(n - 1);
+        SquareSum calculator
+                = new SquareSum(n - 1);
 
         calculator.fork();
 
@@ -36,7 +36,7 @@ public class ForkJoinTaskExample extends RecursiveTask<Integer> {
     public static void main(String[] args) {
         ForkJoinPool forkJoinPool = new ForkJoinPool();
 
-        ForkJoinTaskExample calculator = new ForkJoinTaskExample(10);
+        SquareSum calculator = new SquareSum(10);
 
         forkJoinPool.execute(calculator);
         System.out.println(calculator.compute());
