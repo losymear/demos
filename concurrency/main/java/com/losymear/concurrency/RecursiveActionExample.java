@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 /**
  * @program: concurrency
- * @description: RecursiveActionExample
+ * @description: 如果workload长度小于THRESHOLD，直接打印；否则对半拆分成两个任务（递归），直到所有子任务的workload小于THRESHOLD
  * @author: losymear
  * @create: 2019-03-11 10:45
  */
