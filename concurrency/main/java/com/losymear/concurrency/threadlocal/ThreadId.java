@@ -1,7 +1,5 @@
 package com.losymear.concurrency.threadlocal;
 
-import com.google.common.collect.Lists;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
