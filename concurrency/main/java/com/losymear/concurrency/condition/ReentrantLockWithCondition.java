@@ -7,6 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * @program: concurrency
  * @description:
+ * 代码来自https://www.baeldung.com/java-concurrent-locks
  * @author: losymear
  * @create: 2019-03-13 19:12
  */
