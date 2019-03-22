@@ -41,6 +41,126 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+            <!-- always needed -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>kernel</artifactId>
+                <version>7.0.4</version>
+            </dependency>
+
+            <!-- always needed -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>io</artifactId>
+                <version>7.0.4</version>
+            </dependency>
+
+            <!-- always needed -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>layout</artifactId>
+                <version>7.0.4</version>
+            </dependency>
+
+            <!-- only needed for forms -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>forms</artifactId>
+                <version>7.0.4</version>
+            </dependency>
+
+            <!-- only needed for PDF/A -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>pdfa</artifactId>
+                <version>7.0.4</version>
+            </dependency>
+
+            <!-- only needed for digital signatures -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>sign</artifactId>
+                <version>7.0.4</version>
+            </dependency>
+
+            <!-- only needed for barcodes -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>barcodes</artifactId>
+                <version>7.0.4</version>
+            </dependency>
+
+            <!-- only needed for Asian fonts -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>font-asian</artifactId>
+                <version>7.0.4</version>
+            </dependency>
+
+            <!-- only needed for hyphenation -->
+            <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>hyph</artifactId>
+                <version>7.0.4</version>
+            </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.itextpdf</groupId>-->
+            <!--<artifactId>html2pdf</artifactId>-->
+            <!--<version>2.1.2</version>-->
+        <!--</dependency>-->
+
+
+
+        <!--<dependency>-->
+            <!--<groupId>com.itextpdf</groupId>-->
+            <!--<artifactId>itextpdf</artifactId>-->
+            <!--<version>5.5.10</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.itextpdf.tool</groupId>-->
+            <!--<artifactId>xmlworker</artifactId>-->
+            <!--<version>5.5.10</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.poi</groupId>-->
+            <!--<artifactId>poi-ooxml</artifactId>-->
+            <!--<version>3.15</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.poi</groupId>-->
+            <!--<artifactId>poi-scratchpad</artifactId>-->
+            <!--<version>3.15</version>-->
+        <!--</dependency>-->
+
+
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>flying-saucer-pdf</artifactId>
+            <version>9.1.18</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>flying-saucer-core</artifactId>
+            <version>9.1.18</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>flying-saucer-swt</artifactId>
+            <version>9.1.18</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.xhtmlrenderer</groupId>-->
+            <!--<artifactId>flying-saucer-core</artifactId>-->
+            <!--<version>9.1.18</version>-->
+        <!--</dependency>-->
+
+
+
     </dependencies>
 
     <build>

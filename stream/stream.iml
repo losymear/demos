@@ -43,7 +43,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:json-smart:2.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:accessors-smart:1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.ow2.asm:asm:5.0.4" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.11.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:2.23.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.bytebuddy:byte-buddy:1.9.10" level="project" />
@@ -54,5 +53,23 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.1.5.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.6.2" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:kernel:7.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:io:7.0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:layout:7.0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:forms:7.0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:pdfa:7.0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:sign:7.0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:barcodes:7.0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:font-asian:7.0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:hyph:7.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.xhtmlrenderer:flying-saucer-pdf:9.1.18" level="project" />
+    <orderEntry type="library" name="Maven: com.lowagie:itext:2.1.7" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcmail-jdk14:1.60" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcpkix-jdk14:1.60" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bctsp-jdk14:1.46" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk14:1.60" level="project" />
+    <orderEntry type="library" name="Maven: org.xhtmlrenderer:flying-saucer-core:9.1.18" level="project" />
+    <orderEntry type="library" name="Maven: org.xhtmlrenderer:flying-saucer-swt:9.1.18" level="project" />
   </component>
 </module>
