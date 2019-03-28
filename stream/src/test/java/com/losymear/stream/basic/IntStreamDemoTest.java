@@ -4,9 +4,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.math.BigInteger;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @RunWith(JUnit4.class)
@@ -21,6 +25,20 @@ public class IntStreamDemoTest {
 
     @Test
     public void temp() {
+        CopyOnWriteArrayList<Integer> numbers
+                = new CopyOnWriteArrayList<>(new Integer[]{1, 3, 5, 8});
+
+        Iterator<Integer> iterator = numbers.iterator();
+
+        List<Integer> result = new LinkedList<>();
+        iterator.forEachRemaining(result::add);
+
+        numbers.add(10);
+        assertThat(result).containsOnly(1, 3, 5, 8);
+
+
+
+
     }
 
 }
