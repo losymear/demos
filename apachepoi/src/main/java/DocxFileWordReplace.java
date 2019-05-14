@@ -15,6 +15,7 @@ import java.util.List;
  * @description: 测试文本替换
  * @author: losymear
  * @create: 2019-05-14 16:37
+ * @see {https://stackoverflow.com/questions/22268898/replacing-a-text-in-apache-poi-xwpf}
  */
 
 
@@ -27,14 +28,17 @@ public class DocxFileWordReplace {
             DocxFileWordReplace docxFileWordReplace = new DocxFileWordReplace();
             XWPFDocument doc = new XWPFDocument(OPCPackage.open(is));
             for (XWPFParagraph p : doc.getParagraphs()) {
+//                System.out.println("p:" + p.getText());
                 List<XWPFRun> runs = p.getRuns();
                 if (runs != null) {
                     for (XWPFRun r : runs) {
                         String text = r.getText(0);
+                        System.out.println("text:" + text);
                         // 替换模板的textField
-                        if (text != null && text.contains("{{textField}}")) {
+                        if (text != null && text.contains("{{todayStr}}")) {
                             DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                            text = text.replace("{{textField}}", LocalDate.now().format(df));
+//                            DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd"+"\uD83E\uDD13\uD83D\uDE1C☑");
+                            text = text.replace("{{todayStr}}", LocalDate.now().format(df));
                             r.setText(text, 0);
                         }
                         if (text != null && text.contains("口人力资源")) {
@@ -43,7 +47,7 @@ public class DocxFileWordReplace {
                         }
 
                         if (text != null && text.contains("{{textField}}")) {
-                            text = text.replace("{{textField}}", "这是一段长本\np1\np2\np3");
+                            text = text.replace("{{textField}}", "这是一段长本\r\np1\r\n11p2\r\np3");
                             r.setText(text, 0);
                         }
                     }
