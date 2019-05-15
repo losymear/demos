@@ -1,112 +1,57 @@
-import org.apache.pdfbox.contentstream.operator.Operator;
-import org.apache.pdfbox.cos.COSArray;
-import org.apache.pdfbox.cos.COSName;
-import org.apache.pdfbox.cos.COSString;
-import org.apache.pdfbox.pdfparser.PDFStreamParser;
-import org.apache.pdfbox.pdfwriter.ContentStreamWriter;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.common.PDStream;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.*;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * @program: pdfreplacetext
  * @description: 替换word里的文本
  * @author: losymear
  * @create: 2019-05-15 14:17
+ * @see {https://itextpdf.com/en/resources/examples/itext-5-legacy/replacing-pdf-objects}
+ * word转成的pdf无法识别，原因未知
  */
 
 
 public class PdfFileWordReplace {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        try {
-
-            PDDocument document = null;
-            InputStream is = PdfFileWordReplace.class.getResourceAsStream("/test.pdf");
-            document = PDDocument.load(is);
-            document = replaceText(document, "Hello", "Hi");
-            document.save("target Path");
-            document.close();
-
-        } catch (Exception e) {
-            System.err.println(e);
-        }
+        manipulatePdf("hello.pdf", "output.pdf");
 
     }
 
-    private static PDDocument replaceText(PDDocument document, String searchString, String replacement) throws IOException {
-        if (isEmpty(searchString) || isEmpty(replacement)) {
-            return document;
+    public static void manipulatePdf(String src, String dest) throws IOException, DocumentException {
+        PdfReader reader = new PdfReader(src);
+        PdfDictionary dict = reader.getPageN(1);
+        PdfObject object = dict.getDirectObject(PdfName.CONTENTS);
+        if (object instanceof PRStream) {
+            PRStream stream = (PRStream) object;
+            byte[] data = PdfReader.getStreamBytes(stream);
+
+
+//            String eredeti = "öűóá";
+//            final String s = new String(eredeti.getBytes());
+
+            String str = new String(data);
+            System.out.println(str);
+            stream.setData(str
+//                    .replace("today", s)
+//                    .replace("时间", "test")
+                    .replace("Hello", "Rs")
+                    .getBytes());
         }
+        PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(dest));
+        stamper.close();
 
-        for (PDPage page : document.getPages()) {
-            PDFStreamParser parser = new PDFStreamParser(page);
-            parser.parse();
-            List<?> tokens = parser.getTokens();
+        Paragraph preface = new Paragraph();
+        preface.setAlignment(Element.ALIGN_CENTER);
 
-            for (int j = 0; j < tokens.size(); j++) {
-                Object next = tokens.get(j);
-                if (next instanceof Operator) {
-                    Operator op = (Operator) next;
-
-                    String pstring = "";
-                    int prej = 0;
-
-                    if (op.getName().equals("Tj")) {
-                        COSString previous = (COSString) tokens.get(j - 1);
-                        String string = previous.getString();
-                        string = string.replaceFirst(searchString, replacement);
-                        previous.setValue(string.getBytes());
-                    } else if (op.getName().equals("TJ")) {
-                        COSArray previous = (COSArray) tokens.get(j - 1);
-                        for (int k = 0; k < previous.size(); k++) {
-                            Object arrElement = previous.getObject(k);
-                            if (arrElement instanceof COSString) {
-                                COSString cosString = (COSString) arrElement;
-                                String string = cosString.getString();
-
-                                if (j == prej) {
-                                    pstring += string;
-                                } else {
-                                    prej = j;
-                                    pstring = string;
-                                }
-                            }
-                        }
-
-                        if (searchString.equals(pstring.trim())) {
-                            COSString cosString2 = (COSString) previous.getObject(0);
-                            cosString2.setValue(replacement.getBytes());
-
-                            int total = previous.size() - 1;
-                            for (int k = total; k > 0; k--) {
-                                previous.remove(k);
-                            }
-                        }
-                    }
-                }
-            }
-            PDStream updatedStream = new PDStream(document);
-            OutputStream out = updatedStream.createOutputStream(COSName.FLATE_DECODE);
-            ContentStreamWriter tokenWriter = new ContentStreamWriter(out);
-            tokenWriter.writeTokens(tokens);
-            out.close();
-            page.setContents(updatedStream);
-        }
-
-        return document;
+        reader.close();
     }
 
-
-    private static boolean isEmpty(String str) {
-        return Objects.isNull(str) || "".equals(str);
-    }
 
 }
